@@ -14,9 +14,9 @@ console.log(document.querySelector('.guess').value);
 document.querySelector('.guess').value = 23;
 
 /* Implementinh the Game Logic*/
-const guessNumber = Math.trunc(Math.random() * 20) + 1; //Math.random();
-
+let guessNumber = Math.trunc(Math.random() * 20) + 1; //Math.random();
 let score = 20;
+let highscore = 0;
 
 /* click event for again btn*/
 document.querySelector('.again').addEventListener('click', function () {
@@ -30,6 +30,8 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.message').textContent = 'Start guessing...';
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
+
+  document.querySelector('.highscore').textContent = 0;
 });
 
 /* click event */
@@ -52,6 +54,11 @@ document.querySelector('.check').addEventListener('click', function () {
 
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
 
     // when guess it too high
   } else if (guess > guessNumber) {
