@@ -30,11 +30,17 @@ document.querySelector('.check').addEventListener('click', function () {
 
   console.log(guess, typeof guess);
 
+  // When there is
   if (!guess) {
     // 0 - false, 1 - true
     document.querySelector('.message').textContent = 'No number!';
-  } else if (guess == guessNumber) {
+  } else if (guess === guessNumber) {
     document.querySelector('.message').textContent = 'Correct number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    document.querySelector('.number').style.width = '30rem';
+
+    // when guess it too high
   } else if (guess > guessNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too high!';
@@ -44,7 +50,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'You lost the game!';
       document.querySelector('.score').textContent = 0;
     }
-  } else if (guess < guessNumber) {
+  } // when guess is too low
+  else if (guess < guessNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too low!';
       score--;
